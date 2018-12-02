@@ -1,21 +1,26 @@
 
 // api key : 2e4a4f77f480288401ccf9dc0dea9a0c
-//doesnt work yet
+
+
 document.getElementById('search').addEventListener('click', getWeatherForecast);
 
+
+
 function getWeatherForecast() {
-    fetch('api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=2e4a4f77f480288401ccf9dc0dea9a0c&units=metric')
-    .then(function(response){
+    let city = document.getElementById('city').value
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=2e4a4f77f480288401ccf9dc0dea9a0c&units=metric`)
+    .then((response)=>{
         return response.json();
     })
-    .then(function(data){
-        console.log(data);
+    .then((data)=>{
+        console.log(data)
+        document.getElementById('forecast').innerHTML =
+         "<p id = cityAPI>"+data.name+"</p>" + 
+        "<br/>" + "<p id=temperature>" + Math.floor(data.main.temp) + "°" +
+        "</p>";
     })
+    .catch((err)=>{
+        console.log(error);
+    });
     
 }
-//api.openweathermap.org/data/2.5/weather?q=London&units=metric
-
-//api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=2e4a4f77f480288401ccf9dc0dea9a0c&units=metric
-
-
-
