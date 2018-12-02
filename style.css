@@ -1,0 +1,85 @@
+html {
+    box-sizing: border-box;
+    /*background: url('https://cdn.pixabay.com/photo/2018/05/31/13/13/rain-3443977_960_720.jpg') center no-repeat;*/
+    /* background-color: rgb(255, 225, 230); */
+    background-color: #cedfea;
+    /* background-color: #5d839c; */
+
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Futura,
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
+    font-size: 16px;
+    
+}
+
+#phone {
+    display: grid;
+    position: relative;
+    height: 70vh;
+    width: 40vh;
+    /* background-color: rgb(255, 225, 230); */
+    background-color: #cedfea;
+    grid-template-rows: 4fr 2fr 9fr 5fr;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-row-gap: .5vh;
+    
+}
+.item{
+    background-color: rgb(238, 148, 136);
+    border-bottom: .5px solid lightgray;
+    border-top: .5px solid lightgray;
+    text-align: center;
+}
+.item:nth-child(1) {
+    display: flex;
+    position: relative;
+    grid-column: 1 / span 3;
+    color: white;
+    font-size: 6vh;
+    font-weight: 300;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.item:nth-child(2) {
+    grid-column: 1 / span 2;
+    background-color: white;
+    border-top: none;
+}
+
+.item:nth-child(3) {
+    border-top: none;
+
+}
+.item:nth-child(4) {
+    grid-column: 1 / span 3;
+    background-color: #fdf5e6ee
+}
+
+.item:nth-child(n + 5) {
+    background-color: white;
+    border-bottom: none;
+    border-top: none;
+}
+.item:nth-child(5) {
+    border-right: .5px solid lightgray;
+}
+.item:nth-child(6) {
+    border-right: .5px solid lightgray;
+}
+#search{
+    height: 100%;
+    width:100%;
+    background-color: rgb(238, 148, 136);
+    border: none;
+}
+
+
