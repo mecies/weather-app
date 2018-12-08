@@ -2,7 +2,6 @@ html {
     box-sizing: border-box;
     
     background-color: #cedfea;
-    /* background-color: #5d839c; */
 
     background-size: cover;
     min-height: 100vh;
@@ -31,7 +30,7 @@ textarea {
     white-space: normal;
     background: none;
     line-height: 1;
-
+   
     /* Browsers have different default form fonts */
     font-size: 13px;
     font-family: Arial;
@@ -96,6 +95,7 @@ textarea {
     border-right: .5px solid lightgray;
 }
 #search{
+    display:block;
     height: 100%;
     width:100%;
     background-color: rgb(238, 148, 136);
@@ -103,12 +103,19 @@ textarea {
     color: white;
     font-size: 3vh;
     font-weight: 300;
+
+    text-align: center;
+    
+   
 }
 #city {
     display: flex;
     height: 7vh;
     width: 100%;
     font-size: 3vh;
+    align-items: stretch;
+    text-align: center;
+   
     
 }
 
@@ -124,5 +131,10 @@ textarea {
     font-size: 4vh;
 
 }
+#windspeed{
+    font-size: 3vh;
+    position: relative;
+}
+
 
 
