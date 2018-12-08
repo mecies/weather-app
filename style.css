@@ -128,12 +128,16 @@ textarea {
 #cityAPI {
 
     color: rgb(238, 148, 136);
-    font-size: 4vh;
+    font-size: 6vh;
+    font-weight: 300;
 
 }
 #windspeed{
     font-size: 3vh;
     position: relative;
+}
+#timer {
+    font-size: 7vh;
 }
 
 
