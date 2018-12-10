@@ -2,7 +2,7 @@ const variables = require('./variables')
 
 
 
-const weatherForecast = function() {
+const forecastWeather = function() {
     let city = document.getElementById('city').value
     fetch(`${variables.url}forecast?q=${city}${variables.key}${variables.unit}&cnt=22`)
         .then((response) => {
@@ -15,7 +15,7 @@ const weatherForecast = function() {
             document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;
         })
         .catch((err) => {
-            console.log(err);
+            console.log(err + "hello");
         });
 }
-module.exports = weatherForecast;
+module.exports = forecastWeather;
