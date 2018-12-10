@@ -7,7 +7,7 @@ const weatherForecast = function() {
             return response.json();
         })
         .then((data) => {
-            console.log(data)
+            
             document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${Math.round(data.list[5].main.temp)}° `;
             document.getElementById('in2days').innerHTML = `in 2 days: </br/>${Math.round(data.list[13].main.temp)}°`;
             document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;
