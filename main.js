@@ -25,6 +25,7 @@ function getCurrentWeather() {
             return response.json();
         })
         .then((data) => {
+            
             const nowTimestamp = Math.floor(Date.now() / 1000)
             if ((nowTimestamp >= data.sys.sunrise && nowTimestamp <= data.sys.sunset)
              && (nowTimestamp >= data.sys.sunrise || nowTimestamp < data.sys.sunset)) {
@@ -43,6 +44,9 @@ function getCurrentWeather() {
                 "<br/>" + "<p id=temperature>" + Math.round(data.main.temp) + "°" +
                 "</p>" + "<p id=windspeed>" +
                 "wind speed: " + data.wind.speed + " km/h" + "</p>";
+            console.log(nowTimestamp)
+            console.log(data.sys.sunset)
+            console.log(data.sys.sunrise)
         })
         .catch((err) => {
             console.log(err);
@@ -58,9 +62,9 @@ function getWeatherForecast() {
         .then((data) => {
             
             console.log(data)
-            document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${data.list[5].main.temp} `;
-            document.getElementById('in2days').innerHTML = `in 2 days: </br/>${data.list[13].main.temp}`;
-            document.getElementById('in3days').innerHTML = `in 3 days: <br/>${data.list[21].main.temp}`;
+            document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${Math.round(data.list[5].main.temp)}° `;
+            document.getElementById('in2days').innerHTML = `in 2 days: </br/>${Math.round(data.list[13].main.temp)}°`;
+            document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;
         })
         .catch((err) => {
             console.log(err);

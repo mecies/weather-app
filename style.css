@@ -41,9 +41,8 @@ textarea {
     position: relative;
     height: 70vh;
     width: 40vh;
-    /* background-color: rgb(255, 225, 230); */
     background-color: #cedfea;
-    grid-template-rows: 4fr 2fr 9fr 5fr;
+    grid-template-rows: 4fr 2fr 8fr 5fr;
     grid-template-columns: 1fr 1fr 1fr; 
     grid-row-gap: .5vh;
     
@@ -139,6 +138,23 @@ textarea {
 #timer {
     font-size: 7vh;
 }
-
+#tomorrow{
+    background-color: rgb(238, 148, 136);
+    color: white;
+    text-align: center;
+    font-size: 3vh
+}
+#in2days{
+    background-color: rgb(238, 148, 136);
+    color: white;
+    text-align: center;
+    font-size: 3vh
+}
+#in3days{
+    background-color: rgb(238, 148, 136);
+    color: white;
+    text-align: center;
+    font-size: 3vh
+}
 
 
