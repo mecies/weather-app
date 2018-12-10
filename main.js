@@ -10,6 +10,7 @@ document.getElementById('city').addEventListener('keypress', function(e){
     let key = e.which || e.keyCode;
     if (key === 13){
        todayWeather();
+       weatherFoecast();
     }
     else{
         return
