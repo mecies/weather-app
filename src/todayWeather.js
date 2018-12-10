@@ -1,14 +1,10 @@
 const variables = require('./variables')
     
-if (location.protocol === 'http:') {
-    url = urlHttp;
-} else {
-    url = urlHttps;
-}
+
 
 const todayWeather = function () {
     let city = document.getElementById('city').value
-    fetch(`${url}weather?q=${city}${variables.key}${variables.unit}`)
+    fetch(`${variables.url}weather?q=${city}${variables.key}${variables.unit}`)
         .then((response) => {
             return response.json();
         })

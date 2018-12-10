@@ -1,10 +1,6 @@
 const variables = require('./variables')
 
-if (location.protocol === 'http:') {
-    url = urlHttp;
-} else {
-    url = urlHttps;
-}
+
 
 const weatherForecast = function() {
     let city = document.getElementById('city').value
