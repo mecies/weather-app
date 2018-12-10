@@ -1,5 +1,11 @@
 const variables = require('./variables')
 
+if (location.protocol === 'http:') {
+    url = urlHttp;
+} else {
+    url = urlHttps;
+}
+
 const weatherForecast = function() {
     let city = document.getElementById('city').value
     fetch(`${variables.url}forecast?q=${city}${variables.key}${variables.unit}&cnt=22`)
