@@ -29,8 +29,8 @@ function getCurrentWeather() {
             const nowTimestamp = Math.floor(Date.now() / 1000)
             if ((nowTimestamp >= data.sys.sunrise && nowTimestamp <= data.sys.sunset)
              && (nowTimestamp >= data.sys.sunrise || nowTimestamp < data.sys.sunset)) {
-                document.querySelector('html').style.backgroundColor = '#FFEBCD';
-                document.querySelector('#phone').style.backgroundColor = '#FFEBCD';
+                document.querySelector('html').style.backgroundColor = '#89cff0';
+                document.querySelector('#phone').style.backgroundColor = '#89cff0';
                 //day
             }
             else{
@@ -42,11 +42,9 @@ function getCurrentWeather() {
             document.getElementById('currentWeather').innerHTML =
                 "<p id = cityAPI>" + data.name + "</p>" +
                 "<br/>" + "<p id=temperature>" + Math.round(data.main.temp) + "°" +
-                "</p>" + "<p id=windspeed>" +
+                "</p>" + "<p id=windspeed>" + 
                 "wind speed: " + data.wind.speed + " km/h" + "</p>";
-            console.log(nowTimestamp)
-            console.log(data.sys.sunset)
-            console.log(data.sys.sunrise)
+            
         })
         .catch((err) => {
             console.log(err);
@@ -60,8 +58,6 @@ function getWeatherForecast() {
             return response.json();
         })
         .then((data) => {
-            
-            console.log(data)
             document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${Math.round(data.list[5].main.temp)}° `;
             document.getElementById('in2days').innerHTML = `in 2 days: </br/>${Math.round(data.list[13].main.temp)}°`;
             document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;

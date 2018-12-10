@@ -42,7 +42,7 @@ textarea {
     height: 70vh;
     width: 40vh;
     background-color: #cedfea;
-    grid-template-rows: 4fr 2fr 8fr 5fr;
+    grid-template-rows: 4fr 2fr 7.5fr 4fr;
     grid-template-columns: 1fr 1fr 1fr; 
     grid-row-gap: .5vh;
     
@@ -122,6 +122,8 @@ textarea {
     font-size: 12vh;
     position: relative;
     bottom : 10%;
+    padding: 0;
+    color: black;
 }
 
 #cityAPI {
@@ -129,11 +131,13 @@ textarea {
     color: rgb(238, 148, 136);
     font-size: 6vh;
     font-weight: 300;
+    padding: 0;
 
 }
 #windspeed{
     font-size: 3vh;
     position: relative;
+    color: grey;
 }
 #timer {
     font-size: 7vh;
@@ -141,20 +145,40 @@ textarea {
 #tomorrow{
     background-color: rgb(238, 148, 136);
     color: white;
+    font-size: 3vh;
+    display: flex;
     text-align: center;
-    font-size: 3vh
+    align-items: center;
+    justify-content: center;
+    
+    
 }
 #in2days{
     background-color: rgb(238, 148, 136);
     color: white;
+    font-size: 3vh;
+    display: flex;
     text-align: center;
-    font-size: 3vh
+    align-items: center;
+    justify-content: center;
+    
 }
 #in3days{
     background-color: rgb(238, 148, 136);
     color: white;
+    font-size: 3vh;
+    display: flex;
     text-align: center;
-    font-size: 3vh
+    align-items: center;
+    justify-content: center;
+    
 }
+
+#currentWeather.item {
+ background-image: url("../img/light-1282314__340.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+}
+
 
 
