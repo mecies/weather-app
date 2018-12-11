@@ -93,18 +93,18 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const timer = __webpack_require__(/*! ./src/timer */ \"./src/timer.js\")\r\nconst variables = __webpack_require__(/*! ./src/variables */ \"./src/variables.js\");\r\nconst todayWeather = __webpack_require__(/*! ./src/todayWeather */ \"./src/todayWeather.js\");\r\nconst forecastWeather = __webpack_require__(/*! ./src/forecastWeather */ \"./src/forecastWeather.js\");\r\n\r\ntimer();\r\ndocument.getElementById('search').addEventListener('click', todayWeather);\r\ndocument.getElementById('search').addEventListener('click', forecastWeather);\r\ndocument.getElementById('city').addEventListener('keypress', function(e){\r\n    let key = e.which || e.keyCode;\r\n    if (key === 13){\r\n    todayWeather();\r\n    forecastWeather();\r\n    }\r\n    else{\r\n        return\r\n    }\r\n});\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./main.js?");
+eval("const timer = __webpack_require__(/*! ./src/timer */ \"./src/timer.js\")\r\nconst variables = __webpack_require__(/*! ./src/variables */ \"./src/variables.js\");\r\nconst weatherFunctions = __webpack_require__(/*! ./src/weatherFunctions */ \"./src/weatherFunctions.js\")\r\nconst keypressHandler = __webpack_require__(/*! ./src/keypress */ \"./src/keypress.js\")\r\n\r\ntimer();\r\n\r\ndocument.getElementById('search').addEventListener('click', ()=>{weatherFunctions.todayWeather(); weatherFunctions.forecastWeather()});\r\ndocument.getElementById('city').addEventListener('keypress', keypressHandler);\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 
-/***/ "./src/forecastWeather.js":
-/*!********************************!*\
-  !*** ./src/forecastWeather.js ***!
-  \********************************/
+/***/ "./src/keypress.js":
+/*!*************************!*\
+  !*** ./src/keypress.js ***!
+  \*************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const variables = __webpack_require__(/*! ./variables */ \"./src/variables.js\")\r\n\r\n\r\n\r\nconst forecastWeather = function() {\r\n    let city = document.getElementById('city').value\r\n    fetch(`${variables.url}forecast?q=${city}${variables.key}${variables.unit}&cnt=22`)\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n        .then((data) => {\r\n            \r\n            document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${Math.round(data.list[5].main.temp)}° `;\r\n            document.getElementById('in2days').innerHTML = `in 2 days: </br/>${Math.round(data.list[13].main.temp)}°`;\r\n            document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;\r\n        })\r\n        .catch((err) => {\r\n            console.log(err + \"hello\");\r\n        });\r\n}\r\nmodule.exports = forecastWeather;\n\n//# sourceURL=webpack:///./src/forecastWeather.js?");
+eval("const weatherFunctions = __webpack_require__(/*! ./weatherFunctions */ \"./src/weatherFunctions.js\")\r\n\r\nfunction keypressHandler(e) {\r\n    let key = e.which || e.keyCode;\r\n    if (key === 13) {\r\n        weatherFunctions.todayWeather();\r\n        weatherFunctions.forecastWeather();\r\n    } else {\r\n        return\r\n    }\r\n}\r\n\r\nmodule.exports = keypressHandler\n\n//# sourceURL=webpack:///./src/keypress.js?");
 
 /***/ }),
 
@@ -119,17 +119,6 @@ eval("\r\nconst timer = function timer() {\r\n    const today = new Date();\r\n 
 
 /***/ }),
 
-/***/ "./src/todayWeather.js":
-/*!*****************************!*\
-  !*** ./src/todayWeather.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("const variables = __webpack_require__(/*! ./variables */ \"./src/variables.js\")\r\n    \r\n\r\n\r\nconst todayWeather = function () {\r\n    let city = document.getElementById('city').value\r\n    fetch(`${variables.url}weather?q=${city}${variables.key}${variables.unit}`)\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n        .then((data) => {\r\n\r\n            const nowTimestamp = Math.floor(Date.now() / 1000)\r\n            if ((nowTimestamp >= data.sys.sunrise && nowTimestamp <= data.sys.sunset) &&\r\n                (nowTimestamp >= data.sys.sunrise || nowTimestamp < data.sys.sunset)) {\r\n                document.querySelector('html').style.backgroundColor = '#89cff0';\r\n                document.querySelector('#phone').style.backgroundColor = '#89cff0';\r\n                //day\r\n            } else {\r\n                //night\r\n                document.querySelector('html').style.backgroundColor = '#5d839c';\r\n                document.querySelector('#phone').style.backgroundColor = '#5d839c';\r\n            }\r\n\r\n            document.getElementById('currentWeather').innerHTML =\r\n                \"<p id = cityAPI>\" + data.name + \"</p>\" +\r\n                \"<br/>\" + \"<p id=temperature>\" + Math.round(data.main.temp) + \"°\" +\r\n                \"</p>\" + \"<p id=windspeed>\" +\r\n                \"wind speed: \" + data.wind.speed + \" km/h\" + \"</p>\";\r\n\r\n        })\r\n        .catch((err) => {\r\n            console.log(err);\r\n        });\r\n}\r\nmodule.exports = todayWeather;\n\n//# sourceURL=webpack:///./src/todayWeather.js?");
-
-/***/ }),
-
 /***/ "./src/variables.js":
 /*!**************************!*\
   !*** ./src/variables.js ***!
@@ -138,6 +127,17 @@ eval("const variables = __webpack_require__(/*! ./variables */ \"./src/variables
 /***/ (function(module, exports) {
 
 eval("const variables = {\r\n    key: \"&APPID=2e4a4f77f480288401ccf9dc0dea9a0c\",\r\n    url: \"http://api.openweathermap.org/data/2.5/\",\r\n    unit: \"&units=metric\"\r\n}\r\n\r\nmodule.exports = variables\r\n\r\n\n\n//# sourceURL=webpack:///./src/variables.js?");
+
+/***/ }),
+
+/***/ "./src/weatherFunctions.js":
+/*!*********************************!*\
+  !*** ./src/weatherFunctions.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const variables = __webpack_require__(/*! ./variables */ \"./src/variables.js\")\r\n    \r\n\r\nconst todayWeather = function () {\r\n    let city = document.getElementById('city').value\r\n    \r\n    fetch(`${variables.url}weather?q=${city}${variables.key}${variables.unit}`)\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n        .then((data) => {\r\n            const nowTimestamp = Math.floor(Date.now() / 1000)\r\n            if ((nowTimestamp >= data.sys.sunrise && nowTimestamp <= data.sys.sunset) &&\r\n                (nowTimestamp >= data.sys.sunrise || nowTimestamp < data.sys.sunset)) {\r\n                document.querySelector('html').style.backgroundColor = '#89cff0';\r\n                document.querySelector('#phone').style.backgroundColor = '#89cff0';\r\n                //day\r\n            } else {\r\n                //night\r\n                document.querySelector('html').style.backgroundColor = '#5d839c';\r\n                document.querySelector('#phone').style.backgroundColor = '#5d839c';\r\n            }\r\n\r\n            document.getElementById('currentWeather').innerHTML =\r\n                \"<p id = cityAPI>\" + data.name + \"</p>\" +\r\n                \"<br/>\" + \"<p id=temperature>\" + Math.round(data.main.temp) + \"°\" +\r\n                \"</p>\" + \"<p id=windspeed>\" +\r\n                \"wind speed: \" + data.wind.speed + \" km/h\" + \"</p>\";\r\n\r\n        })\r\n        .catch((err) => {\r\n            console.log(err);\r\n        });\r\n        \r\n}\r\n\r\nconst forecastWeather = function () {\r\n    let city = document.getElementById('city').value\r\n    fetch(`${variables.url}forecast?q=${city}${variables.key}${variables.unit}&cnt=22`)\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n        .then((data) => {\r\n\r\n            document.getElementById('tomorrow').innerHTML = `tomorrow: <br/>${Math.round(data.list[5].main.temp)}° `;\r\n            document.getElementById('in2days').innerHTML = `in 2 days: </br/>${Math.round(data.list[13].main.temp)}°`;\r\n            document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;\r\n        })\r\n        .catch((err) => {\r\n           console.log(err)\r\n        });\r\n}\r\n\r\n\r\nmodule.exports = {todayWeather, forecastWeather};\r\n\r\n\n\n//# sourceURL=webpack:///./src/weatherFunctions.js?");
 
 /***/ })
 

@@ -1,15 +1,14 @@
 const variables = require('./variables')
     
 
-
 const todayWeather = function () {
     let city = document.getElementById('city').value
+    
     fetch(`${variables.url}weather?q=${city}${variables.key}${variables.unit}`)
         .then((response) => {
             return response.json();
         })
         .then((data) => {
-
             const nowTimestamp = Math.floor(Date.now() / 1000)
             if ((nowTimestamp >= data.sys.sunrise && nowTimestamp <= data.sys.sunset) &&
                 (nowTimestamp >= data.sys.sunrise || nowTimestamp < data.sys.sunset)) {
@@ -32,6 +31,7 @@ const todayWeather = function () {
         .catch((err) => {
             console.log(err);
         });
+        
 }
 
 const forecastWeather = function () {
@@ -47,10 +47,10 @@ const forecastWeather = function () {
             document.getElementById('in3days').innerHTML = `in 3 days: <br/>${Math.round(data.list[21].main.temp)}°`;
         })
         .catch((err) => {
-            console.log(err + "hello");
+           console.log(err)
         });
 }
 
 
-module.exports = forecastWeather;
-module.exports = todayWeather;
+module.exports = {todayWeather, forecastWeather};
+

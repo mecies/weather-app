@@ -1,22 +1,11 @@
 const timer = require('./src/timer')
 const variables = require('./src/variables');
-const todayWeather = require('./src/weatherFunctions');
-const forecastWeather = require('./src/weatherFunctions');
+const weatherFunctions = require('./src/weatherFunctions')
+const keypressHandler = require('./src/keypress')
 
 timer();
 
-document.getElementById('search').addEventListener('submit', function(e){
-    e.preventDefault();
-    todayWeather();
-    forecastWeather();
-});
+document.getElementById('search').addEventListener('click', ()=>{weatherFunctions.todayWeather(); weatherFunctions.forecastWeather()});
+document.getElementById('city').addEventListener('keypress', keypressHandler);
 
 
-// let key = e.which || e.keyCode;
-// if (key === 13) {
-//     todayWeather();
-//     forecastWeather();
-// }
-// else {
-//     return
-// }
