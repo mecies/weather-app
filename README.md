@@ -6,6 +6,7 @@ Tools:\
 -HTML, CSS, JS\
 -webpack\
 Background changes based on the time of the day in desired location.\
+Feel free to test it here: https://mecies.github.io/weather-app/ \
 <img src="https://i.imgur.com/XyhO2Sj.png" />
 
 
