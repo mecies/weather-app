@@ -5,6 +5,7 @@ You can check the weather all around the world\
 Tools:\
 -HTML, CSS, JS\
 -webpack\
-Background changes based on the time of the day in desired location.
-<img src="https://imgur.com/XyhO2Sj" />
+Background changes based on the time of the day in desired location.\
+<img src="https://i.imgur.com/XyhO2Sj.png" />
+
 
