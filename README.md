@@ -1,6 +1,6 @@
 # Weather Forecast Website
 Not the pretiest, but functional weather forecast website!\
-Displays todays weather and time in desired location as well ass weather for upcoming 3 days :)\
+Displays today's weather and time in desired location as well as weather for upcoming 3 days :)\
 You can check the weather all around the world\
 Tools:\
 -HTML, CSS, JS\
